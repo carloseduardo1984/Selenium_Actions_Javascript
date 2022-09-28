@@ -32,8 +32,11 @@ jobs:
         run: npm test
         
       - name: Generate report
+        continue-on-error: true
         run:  npm test
+        
       - name: Upload report
+        continue-on-error: true
         uses: actions/upload-artifact@v2
         with:
           name: jest-report
