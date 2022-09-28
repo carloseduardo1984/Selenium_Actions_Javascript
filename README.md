@@ -8,10 +8,13 @@ Receita para criar projetos com Selenium framework com cucumber-js
 
 > ```npm init  // Criar arquivo package.json```
 
-``` > npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber```
-``` > npm install selenium-webdriver  // Documentação de apoio > https://www.selenium.dev/selenium/docs/api/javascript/```
-``` > npm install assert```
-``` > npm install chromedriver geckodriver```
+> ```npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber```
+
+> ```npm install selenium-webdriver  // Documentação de apoio > https://www.selenium.dev/selenium/docs/api/javascript/```
+
+> ``` npm install assert```
+
+> ``` npm install chromedriver geckodriver```
 
 Pronto, agora para para executa é só executar o comando no terminal > npm test 
 
