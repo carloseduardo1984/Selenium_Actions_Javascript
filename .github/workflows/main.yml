@@ -77,7 +77,7 @@ jobs:
        - name: Generate report
          uses: actions/upload-artifact@v2
          with:
-          name: cucumber-report.html
+          name: QA-report.html
           path: "**/cucumber-report.html"
           
           
