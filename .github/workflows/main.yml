@@ -70,7 +70,7 @@ jobs:
           
   deploy-uat:
       name: UAT
-      needs: [deploy-dev]
+      needs: [deploy-qa]
       runs-on: ubuntu-latest
       steps:
        - run: echo "🎉 Test in UAT environment"
@@ -86,6 +86,13 @@ jobs:
        - name: Run Tests
          continue-on-error: true
          run:  npm run test   
+         
+  deploy-pre-prod:
+      name: PRE-PROD
+      needs: [deploy-uat]
+      runs-on: ubuntu-latest
+      steps:
+       - run: echo "🎉 Deploy to Pre-production environment"
       
        - uses: everlytic/branch-merge@1.1.2
          with:          
