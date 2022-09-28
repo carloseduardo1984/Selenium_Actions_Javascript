@@ -80,7 +80,7 @@ jobs:
           name: QA-report.html
           path: "**/cucumber-report.html"
           
-deploy-qa-api:
+  deploy-qa-api:
       name: QA-API
       needs: [deploy-dev]
       runs-on: ubuntu-latest
@@ -107,7 +107,7 @@ deploy-qa-api:
           path: "**/cucumber-report.html"         
           
           
-deploy-uat:
+  deploy-uat:
       name: UAT
       needs: [deploy-qa]
       runs-on: ubuntu-latest
