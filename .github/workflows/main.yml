@@ -101,4 +101,18 @@ jobs:
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'  
           
           
+  deploy-prod:
+      name: PROD
+      needs: [deploy-pre-prod]
+      runs-on: ubuntu-latest
+      steps:
+       - run: echo "🎉 Deploy to Production environment"
+      
+       - uses: everlytic/branch-merge@1.1.2
+         with:          
+          source_ref: 'pre-prod'
+          target_branch: 'main'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'  
+          
+          
           
