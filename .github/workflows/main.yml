@@ -80,8 +80,34 @@ jobs:
           name: QA-report.html
           path: "**/cucumber-report.html"
           
+deploy-qa-api:
+      name: QA-API
+      needs: [deploy-dev]
+      runs-on: ubuntu-latest
+      steps:
+       - run: echo "🎉 Test in QA environment"
+
+       - name: Check out repository code
+         uses: actions/checkout@v2
+         timeout-minutes: 10
+
+       - name: Install libraries
+         run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
+         timeout-minutes: 10
+        
+       - name: Run Tests
+         continue-on-error: true
+         run:  npm run test       
           
-  deploy-uat:
+       
+       - name: Generate report
+         uses: actions/upload-artifact@v2
+         with:
+          name: API-report.html
+          path: "**/cucumber-report.html"         
+          
+          
+deploy-uat:
       name: UAT
       needs: [deploy-qa]
       runs-on: ubuntu-latest
