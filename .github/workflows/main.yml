@@ -12,23 +12,86 @@ on:
 
 jobs:
 
-  #test_schedule:
-  checkout-and-test:
+  deploy-dev:
+    name: DEV
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 
       - name: Check out repository code
         uses: actions/checkout@v2
+        timeout-minutes: 10
 
       - name: Install libraries
         run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
+        timeout-minutes: 10
         
       - name: Run Tests
+        continue-on-error: true
         run:  npm run test   
+      
+      - uses: everlytic/branch-merge@1.1.2
+        with:          
+          source_ref: 'dev'
+          target_branch: 'master'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
         
-      - name: Generate report
-        uses: actions/upload-artifact@v2
-        with:
+  deploy-qa:
+      name: QA
+      needs: [deploy-dev]
+      runs-on: ubuntu-latest
+      steps:
+       - run: echo "🎉 Test in QA environment"
+
+       - name: Check out repository code
+         uses: actions/checkout@v2
+         timeout-minutes: 10
+
+       - name: Install libraries
+         run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
+         timeout-minutes: 10
+        
+       - name: Run Tests
+         continue-on-error: true
+         run:  npm run test   
+      
+       - uses: everlytic/branch-merge@1.1.2
+         with:          
+          source_ref: 'qa'
+          target_branch: 'uat'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'       
+        
+       - name: Generate report
+         uses: actions/upload-artifact@v2
+         with:
           name: cucumber-report.html
           path: "**/cucumber-report.html"
+          
+          
+  deploy-uat:
+      name: UAT
+      needs: [deploy-dev]
+      runs-on: ubuntu-latest
+      steps:
+       - run: echo "🎉 Test in UAT environment"
+
+       - name: Check out repository code
+         uses: actions/checkout@v2
+         timeout-minutes: 10
+
+       - name: Install libraries
+         run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver
+         timeout-minutes: 10
+        
+       - name: Run Tests
+         continue-on-error: true
+         run:  npm run test   
+      
+       - uses: everlytic/branch-merge@1.1.2
+         with:          
+          source_ref: 'uat'
+          target_branch: 'pre-prod'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'  
+          
+          
+          
