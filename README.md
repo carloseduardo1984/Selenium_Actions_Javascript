@@ -4,8 +4,8 @@ Selenium_Actions
 
 Receita para criar projetos com Selenium framework com cucumber-js 
 
-``` > npm install // https://www.npmjs.com/```
-``` > npm init  // Criar arquivo package.json```
+> ```npm install // https://www.npmjs.com/```
+> ```npm init  // Criar arquivo package.json```
 ``` > npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber```
 ``` > npm install selenium-webdriver  // Documentação de apoio > https://www.selenium.dev/selenium/docs/api/javascript/```
 ``` > npm install assert```
