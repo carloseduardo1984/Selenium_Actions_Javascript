@@ -18,4 +18,6 @@ Receita para criar projetos com Selenium framework com cucumber-js
 
 Pronto, agora para para executa é só executar o comando no terminal > ```npm test``` 
 
+FAÇA OS COMANDO GIT E CRIE SEU REPOSITORIO NO GITHUB, ENTÃO COPIE O ARQUIVO MAIN.YML DESTE GITHUB-ACTION NO SEU REPOSITORIO.
+
 ```PARA EXECUTAR AUTOMATICAMENTE É SÓ CRIAR UMA ATUALIZAÇÃO NO PROJETO E O GITHUB ACTION JÁ EXECUTA E ADICIONA O REPORT.```
