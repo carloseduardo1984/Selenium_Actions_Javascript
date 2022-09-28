@@ -1,0 +1,21 @@
+{
+  "name": "simple_selenium_with_cucumberjs",
+  "version": "1.0.0",
+  "description": "meu projeto",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/* --format html:cucumber-report.html"
+  },
+  "author": "ceo",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.3.1",
+    "@cucumber/pretty-formatter": "^1.0.0-alpha.2"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "chromedriver": "^103.0.0",
+    "geckodriver": "^3.0.1",
+    "selenium-webdriver": "^4.3.0"
+  }
+}
