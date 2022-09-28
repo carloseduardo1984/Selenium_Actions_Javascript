@@ -1,6 +1,6 @@
 # Selenium_Actions_Javascript
 
-Selenium_Actions 
+Selenium_Actions   [![Selenium tests with Github Actions](https://github.com/carloseduardo1984/Selenium_Actions_Javascript/actions/workflows/main.yml/badge.svg)](https://github.com/carloseduardo1984/Selenium_Actions_Javascript/actions/workflows/main.yml)
 
 Receita para criar projetos com Selenium framework com cucumber-js 
 
