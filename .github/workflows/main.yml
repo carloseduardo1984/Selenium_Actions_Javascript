@@ -16,19 +16,29 @@ jobs:
     name: DEV
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
 
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        timeout-minutes: 10
+      # Install required deps for action - jest, jest-html-report
+      - name: Install Dependencies
+        run: npm install --save-dev jest jest-html-reporter 
 
-      - name: Install libraries
-        run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
-        timeout-minutes: 10
-        
-      - name: Run Tests
+      # Finally, run our tests
+      - name: Run the tests
         continue-on-error: true
-        run:  npm run test   
+        run: npm test
+        
+      - name: Generate report
+        run:  npm test
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jest-report
+          path: './test-report.html'
+      - run: echo REALIZANDO TESTES UNITARIOS
       
       - uses: everlytic/branch-merge@1.1.2
         with:          
