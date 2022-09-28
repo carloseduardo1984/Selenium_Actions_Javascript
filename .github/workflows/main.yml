@@ -21,8 +21,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-#       - name: Install libraries
-#         run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
+      - name: Install libraries
+        run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
         
       - name: Run Tests
         run:  npm run test   
